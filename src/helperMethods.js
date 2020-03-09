@@ -39,22 +39,8 @@ export const upload = async function(path) {
 
   console.log('\nUploading to Azure storage as blob:\n\t', blobName);
 
-// Upload data to the blob
-  // const data = 'Hello, World!';
-  // const uploadBlobResponse = await blockBlobClient.upload(data, data.length);
-  // const filePath = '/Users/y0f00pb/desktop/testfolder/test';
   // todo: how to upload different type files, try upload/uploadStream
   const uploadBlobResponse =  await blockBlobClient.uploadFile(path);
   console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
-
-//  console.log('\nListing blobs...');
-
-// List the blob(s) in the container.
-//   for await (const blob of containerClient.listBlobsFlat()) {
-//     console.log('\t', blob.name);
-//   }
-};
-
-// upload().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 
