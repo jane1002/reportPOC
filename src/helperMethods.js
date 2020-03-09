@@ -43,7 +43,8 @@ export const upload = async function(path) {
   // const data = 'Hello, World!';
   // const uploadBlobResponse = await blockBlobClient.upload(data, data.length);
   // const filePath = '/Users/y0f00pb/desktop/testfolder/test';
-  const uploadBlobResponse =  await blockBlobClient.uploadStream(path);
+  // todo: how to upload different type files, try upload/uploadStream
+  const uploadBlobResponse =  await blockBlobClient.uploadFile(path);
   console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
 
 //  console.log('\nListing blobs...');
