@@ -16,7 +16,8 @@ export const upload = async function(path) {
   const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 
 // Create the BlobServiceClient object which will be used to create a container client
-  const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+  const blobServiceClient = await BlobServiceClient.fromConnectionString(
+      AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
   const containerName = 'jssdktestontainer' + uuidv1();
@@ -25,11 +26,13 @@ export const upload = async function(path) {
   console.log('\t', containerName);
 
 // Get a reference to a container
-  const containerClient = await blobServiceClient.getContainerClient(containerName);
+  const containerClient = await blobServiceClient.getContainerClient(
+      containerName);
 
 // Create the container
   const createContainerResponse = await containerClient.create();
-  console.log("Container was created successfully. requestId: ", createContainerResponse.requestId);
+  console.log("Container was created successfully. requestId: ",
+      createContainerResponse.requestId);
 
   // Create a unique name for the blob
   const blobName = 'jstestfile1' + uuidv1() + '.txt';
@@ -40,7 +43,10 @@ export const upload = async function(path) {
   console.log('\nUploading to Azure storage as blob:\n\t', blobName);
 
   // todo: how to upload different type files, try upload/uploadStream
-  const uploadBlobResponse =  await blockBlobClient.uploadFile(path);
-  console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
+  const uploadBlobResponse = await blockBlobClient.uploadFile(path);
+  console.log("Blob was uploaded successfully. requestId: ",
+      uploadBlobResponse.requestId);
+
+}
 
 
